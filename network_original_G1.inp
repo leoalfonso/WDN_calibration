@@ -1,0 +1,195 @@
+[TITLE]
+
+
+[JUNCTIONS]
+;ID              	Elev        	Demand      	Pattern         
+ 2               	40          	0           	                	;
+ 3               	42          	6           	D1              	;
+ 4               	44          	6           	D1              	;
+ 5               	44          	6           	D1              	;
+ 6               	44          	6           	D1              	;
+ 7               	42          	4           	D1              	;
+ 8               	42          	4           	D1              	;
+ 9               	40          	4           	D1              	;
+ 10              	40          	4           	D1              	;
+ 11              	38          	4           	D1              	;
+ 12              	38          	4           	D1              	;
+ 13              	38          	4           	D1              	;
+
+[RESERVOIRS]
+;ID              	Head        	Pattern         
+ R1              	20          	                	;
+
+[TANKS]
+;ID              	Elevation   	InitLevel   	MinLevel    	MaxLevel    	Diameter    	MinVol      	VolCurve        	Overflow
+ T1              	77          	3.5         	2           	6           	20          	0           	                	;
+
+[PIPES]
+;ID              	Node1           	Node2           	Length      	Diameter    	Roughness   	MinorLoss   	Status
+ 2               	2               	T1              	100         	300         	0.1         	0           	Open  	;
+ 3               	T1              	3               	50          	300         	0.1         	0           	Open  	;
+ 4               	3               	4               	1500        	200         	0.9         	0           	Open  	;
+ 5               	4               	5               	1000        	150         	0.1         	0           	Open  	;
+ 6               	4               	6               	3000        	150         	0.1         	0           	Open  	;
+ 7               	5               	6               	1000        	150         	0.1         	0           	Open  	;
+ 8               	3               	7               	800         	250         	0.1         	0           	Open  	;
+ 9               	7               	5               	800         	200         	0.1         	0           	Open  	;
+ 10              	7               	8               	800         	200         	0.1         	0           	Open  	;
+ 11              	8               	6               	2000        	100         	0.1         	0           	Open  	;
+ 12              	3               	9               	800         	150         	0.1         	0           	Open  	;
+ 13              	9               	7               	800         	80          	0.1         	0           	Open  	;
+ 16              	9               	11              	800         	100         	0.1         	0           	Open  	;
+ 17              	9               	12              	500         	100         	0.1         	0           	Open  	;
+ 18              	9               	10              	800         	80          	0.1         	0           	Open  	;
+ 19              	13              	10              	800         	80          	0.1         	0           	Open  	;
+ 20              	10              	12              	500         	80          	0.1         	0           	Open  	;
+ 21              	12              	11              	500         	80          	0.1         	0           	Open  	;
+ 22              	13              	12              	500         	80          	0.1         	0           	Open  	;
+ 23              	8               	13              	1000        	100         	0.1         	0           	Open  	;
+ 14              	7               	10              	600         	80          	0.1         	0           	Open  	;
+ 15              	8               	10              	500         	80          	0.1         	0           	Open  	;
+
+[PUMPS]
+;ID              	Node1           	Node2           	Parameters
+ P1              	R1              	2               	HEAD CP1	PATTERN PP1	;
+ P2              	R1              	2               	HEAD CP1	PATTERN PP2	;
+
+[VALVES]
+;ID              	Node1           	Node2           	Diameter    	Type	Setting     	MinorLoss   
+
+[TAGS]
+
+[DEMANDS]
+;Junction        	Demand      	Pattern         	Category
+
+[STATUS]
+;ID              	Status/Setting
+
+[PATTERNS]
+;ID              	Multipliers
+;
+ D1              	0.61        	0.5         	0.47        	0.45        	0.5         	0.62        
+ D1              	1.2         	1.35        	1.25        	1.2         	1.1         	1.2         
+ D1              	1.22        	1.18        	1.1         	1           	1.15        	1.2         
+ D1              	1.3         	1.45        	1.25        	1.1         	0.9         	0.7         
+;
+ PP1             	1           	1           	1           	1           	1           	1           
+ PP1             	0           	0           	0           	0           	0           	1           
+ PP1             	1           	1           	1           	1           	1           	0           
+ PP1             	0           	1           	1           	1           	1           	1           
+;
+ PP2             	1           	1           	1           	1           	1           	1           
+ PP2             	1           	1           	1           	1           	1           	0           
+ PP2             	0           	0           	0           	0           	0           	1           
+ PP2             	1           	1           	1           	1           	1           	1           
+
+[CURVES]
+;ID              	X-Value     	Y-Value
+;PUMP: PUMP: 
+ CP1             	0           	66          
+ CP1             	72          	56          
+ CP1             	130         	44          
+ CP1             	180         	0           
+
+[CONTROLS]
+
+
+[RULES]
+
+
+[ENERGY]
+ Global Efficiency  	75
+ Global Price       	0
+ Demand Charge      	0
+
+[EMITTERS]
+;Junction        	Coefficient
+
+[QUALITY]
+;Node            	InitQual
+
+[SOURCES]
+;Node            	Type        	Quality     	Pattern
+
+[REACTIONS]
+;Type     	Pipe/Tank       	Coefficient
+
+
+[REACTIONS]
+ Order Bulk            	1
+ Order Tank            	1
+ Order Wall            	1
+ Global Bulk           	0
+ Global Wall           	0
+ Limiting Potential    	0
+ Roughness Correlation 	0
+
+[MIXING]
+;Tank            	Model
+
+[TIMES]
+ Duration           	24:00 
+ Hydraulic Timestep 	1:00 
+ Quality Timestep   	0:05 
+ Pattern Timestep   	1:00 
+ Pattern Start      	0:00 
+ Report Timestep    	1:00 
+ Report Start       	0:00 
+ Start ClockTime    	12 am
+ Statistic          	NONE
+
+[REPORT]
+ Status             	No
+ Summary            	No
+ Page               	0
+
+[OPTIONS]
+ Units              	LPS
+ Headloss           	D-W
+ Specific Gravity   	1
+ Viscosity          	1
+ Trials             	40
+ Accuracy           	0.001
+ CHECKFREQ          	2
+ MAXCHECK           	10
+ DAMPLIMIT          	0
+ Unbalanced         	Continue 10
+ Pattern            	1
+ Demand Multiplier  	1.0
+ Emitter Exponent   	0.5
+ Quality            	None mg/L
+ Diffusivity        	1
+ Tolerance          	0.01
+
+[COORDINATES]
+;Node            	X-Coord           	Y-Coord
+2               	4900.000          	7000.000          
+3               	4200.000          	7800.000          
+4               	3800.000          	6200.000          
+5               	2600.000          	7000.000          
+6               	400.000           	6200.000          
+7               	2800.000          	7800.000          
+8               	1200.000          	7800.000          
+9               	3400.000          	8700.000          
+10              	2200.000          	8700.000          
+11              	3400.000          	9800.000          
+12              	2400.000          	9700.000          
+13              	1500.000          	9200.000          
+R1              	5800.000          	7000.000          
+T1              	4700.000          	7600.000          
+
+[VERTICES]
+;Link            	X-Coord           	Y-Coord
+P2              	5558.900          	6622.000          
+P2              	5100.640          	6639.290          
+
+[LABELS]
+;X-Coord             Y-Coord             Label & Anchor Node
+
+[BACKDROP]
+  DIMENSIONS  	130.000           	6020.000          	6070.000          	9980.000          
+ UNITS          	None
+ FILE           	
+ OFFSET         	0.00            	0.00            
+
+[END]
